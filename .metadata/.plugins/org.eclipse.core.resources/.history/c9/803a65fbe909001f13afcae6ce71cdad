@@ -1,0 +1,47 @@
+package CalenderHandling;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class SimpleCalenderHandling {
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://seleniumpractise.blogspot.com/2016/08/how-to-handle-calendar-in-selenium.html");
+		WebElement datePicker = driver.findElement(By.id("datepicker"));
+		datePicker.click();
+		
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.visibilityOf(datePicker));
+		
+		WebElement currentMonth = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']"));
+		String month = currentMonth.getText();
+		System.out.println(month);
+		WebElement currentYear = driver.findElement(By.xpath("//span[@class='ui-datepicker-year']"));
+		String year = currentYear.getText();
+		System.out.println(year);
+		
+		String expectedDay="20";
+		String expectedMonth="jully";
+		String expectedYear="2027";
+		
+		while( ! expectedMonth.equals(expectedMonth) && expectedYear.equals(expectedYear))
+		{
+			WebElement nextButton = driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']"));
+			nextButton.click();
+			
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,25 @@
+package CalenderHandling;
+
+import java.util.Scanner;
+
+public class HandlingCalenderUsingResuableMethod {
+	
+	
+	public static void main(String[] args) {
+		
+		collectDateFromUsersAsInput();
+		
+	}
+	
+	public static String collectDateFromUsersAsInput(){
+		
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("Enter date in this format dd/MM/yyyy:");  // "25/11/2027"
+		String expectedDate = scanner.nextLine();
+		scanner.close();
+		return expectedDate;
+	}
+	
+	
+
+}

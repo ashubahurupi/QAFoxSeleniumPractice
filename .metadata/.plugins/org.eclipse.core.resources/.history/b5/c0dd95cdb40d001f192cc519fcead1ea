@@ -1,0 +1,18 @@
+package QaFoxPracticalDemo;
+
+import java.util.ArrayList;
+
+public class AddarrayInList {
+	
+	public static void main(String[] args) {
+		
+		// Store String Values 
+		ArrayList<String> alist=new ArrayList<String>();
+		alist.add("Ashish");
+		alist.add("Bahurupi");
+		alist.add("QA Engineer");
+		
+		System.out.println(alist);
+	}
+
+}

@@ -1,0 +1,56 @@
+package TableHandling;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PrintTheEntireTable {
+	
+	
+	public static void main(String[] args) {
+		
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://omayo.blogspot.com/");
+		
+		List<WebElement> rowsElements = driver.findElements(By.xpath("//*[@id='table1']//tr"));
+		int rows=rowsElements.size();
+		
+		List<WebElement> columsElements = driver.findElements(By.xpath("//*[@id='table1']//th"));
+		int colummns = columsElements.size();
+		
+		
+		for(int r=1 ;r<=rows; r++)
+		{
+			if(r==1)
+			{
+				
+				for(int c=1 ;c<=colummns; c++)
+				{
+					String xpathText="//*[@id='table1']//th["+c+"]";
+					WebElement tableHeading=driver.findElement(By.xpath(xpathText));
+					System.out.print(tableHeading.getText()+ " ");
+					
+				}
+				
+			}
+			else
+			{
+				for(int c=1; c<colummns; c++)
+				{
+					String xpathText="//*[@id='table1']//tr["+(r-1)+"]";
+					WebElement tabledata = driver.findElement(By.xpath(xpathText));
+					String tabledataText=tabledata.getText();
+					System.out.print(tabledataText+" ");
+				}
+				
+			}
+		}
+		
+		System.out.println();
+	}
+
+}
